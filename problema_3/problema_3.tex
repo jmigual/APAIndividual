@@ -1,0 +1,119 @@
+\documentclass[a4paper]{article}
+\usepackage[margin=2cm]{geometry}
+
+\usepackage{fontspec}			% utf-8 suport
+\usepackage{amsmath}			% Math utilities
+\usepackage{amssymb}			% Math symbols
+\usepackage{amsfonts}			% More math fonts
+\usepackage{mathtools}			% More math tools (rcases)
+\usepackage[makeroom]{cancel}	% Math cancel
+\usepackage[catalan]{babel} 	% Language 
+\usepackage{enumitem}			% To resume the enumeration
+\usepackage{float}				% Better floating options
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.2cm}
+
+\title{\textsc{APA Problemes} \\ Problema 5 Propietats elàstiques d'una molla}
+\author{Joan Marcè i Igual}
+\date{}
+
+
+\begin{document}
+\maketitle
+
+\textbf{Volem determinar les propietats elàstiques d'una molla usant diferents pesos i mesurant la deformació que es produeix. La llei de Hooke relaciona la longitud $l$ i la força $F$ que exerceix el pes com:}
+$$
+e + kF = l
+$$
+\textbf{on $e,k$ són constants de la llei, que es volen determinar. S'ha realitzat un experiment i obtingut les dades:}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{l|rrrrr}
+		$F$ & 1 & 2 & 3 & 4 & 5 \\
+		\hline
+		$l$ & 7.97 & 10.2 & 14.2 & 16.0 & 21.2
+	\end{tabular}
+\end{table}
+
+\begin{enumerate}
+	\item \textbf{Plantegeu el problema com un problema de mínims quadrats}
+\end{enumerate}
+S'han d'obtenir les funcions de base:
+$$
+f(\vec{w}, \vec{x}) = \sum_{i=0}^{M-1} w_i \phi_i(\vec{x}) \implies l(F) =
+\underbrace{e}_{w_0}·\underbrace{1}_{\phi_0} +
+\underbrace{k}_{w_1}·\underbrace{F}_{\phi_1} 
+$$
+Així doncs s'obtenen els següents paràmetres:
+$$
+\vec{w} = 
+\begin{pmatrix}
+e \\
+k
+\end{pmatrix}
+\qquad
+\vec{\phi}(\vec{x}) = \vec{\phi}(F) =
+\begin{pmatrix}
+1 \\
+F
+\end{pmatrix}
+$$
+I per tant les matrius de disseny i resultats són les següents:
+$$
+\Phi = 
+\begin{pmatrix}
+1 & 1 \\
+1 & 2 \\
+1 & 3 \\
+1 & 4 \\
+1 & 5
+\end{pmatrix}
+\qquad
+t = 
+\begin{pmatrix}
+7.97 \\
+10.2 \\
+14.2 \\
+16.0 \\
+21.2
+\end{pmatrix}
+$$
+I el sistema resultat és el següent:
+$$
+(\Phi^T\Phi)w = \Phi^T t \implies w = (\Phi^T\Phi)^{-1} \Phi^T t 
+$$
+
+\begin{enumerate}[resume]
+	\item \textbf{Resoleu-lo amb el mètode de la matriu pseudo-inversa}
+\end{enumerate}
+La matriu pseudo-inversa ($\Phi^+$) es calcula de la següent manera:
+$$
+\Phi^+ = (\Phi^T\Phi)^{-1}\Phi^T
+$$
+Així doncs mitjançant \texttt{R} s'obtenen els següents valors per a la matriu pseudo-inversa:
+$$
+\Phi^+ =
+\begin{pmatrix}
+0.8 & 0.5 & 0.2 & -0.1 & -0.4\\
+-0.2 & -0.1 & 0.0 & 0.1 & 0.2\\
+\end{pmatrix}
+\implies 
+w = 
+\begin{pmatrix}
+
+\end{pmatrix}
+$$
+
+\begin{enumerate}[resume]
+	\item \textbf{Resoleu-lo amb el mètode basat en SVD}
+\end{enumerate}
+
+
+
+
+
+
+
+
+\end{document}
