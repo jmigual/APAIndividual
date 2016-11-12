@@ -14,5 +14,6 @@ print(w.pseudo)
 svd = svd(X)
 print(svd)
 
+# Calcular solució a partir de svd
 D = diag(2)*(1/svd$d)
-
+w.svd = svd$v %*% D %*% t(svd$u) %*% t
