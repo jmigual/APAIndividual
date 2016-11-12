@@ -109,9 +109,36 @@ $$
 	\item \textbf{Resoleu-lo amb el mètode basat en SVD}
 \end{enumerate}
 
-
-
-
+Es busquen els valors singulars de la matriu de disseny $\Phi$.
+$$
+U = 
+\begin{pmatrix}
+0.16 & 0.76 \\
+0.29 & 0.47 \\
+0.41 & 0.18 \\
+0.54 & -0.11 \\
+0.66 & -0.40 \\
+\end{pmatrix}
+\qquad
+D =
+\begin{pmatrix}
+7.69 & 0 \\
+0 & 0.92 \\
+\end{pmatrix}
+\qquad
+V = 
+\begin{pmatrix}
+0.27 & 0.96 \\
+0.96 & -0.27 \\
+\end{pmatrix}
+$$
+El valor de $\vec{w}$ es pot trobar mitjançant:
+$$
+\vec{w} = V·diag\left(\frac{1}{\lambda_i}\right)·U^T·t
+$$
+$$
+\vec{w}
+$$
 
 
 
