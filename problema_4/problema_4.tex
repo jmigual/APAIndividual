@@ -1,0 +1,48 @@
+\documentclass[a4paper]{article}
+\usepackage[margin=2cm]{geometry}
+
+\usepackage{fontspec}			% utf-8 support
+\usepackage{amsmath}			% Math utilities
+\usepackage{amsfonts}			% Math fonts
+\usepackage[makeroom]{cancel}	% Math cancel (crossed symbols)
+\usepackage{enumitem}			% To resume enumerations
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.2cm}
+
+\title{\textsc{APA Problemes} \\ Problema 5 La fàbrica de píndoles I}
+\author{Joan Marcè i Igual}
+\date{}
+
+\begin{document}
+\maketitle
+
+\textbf{La companyia farmacèutica \emph{Nice Pills} ha construït una cinta transportadora que porta dues \emph{classes} de píndoles (adequades per dos tipus de malalties diferents), que anomenem $C_1$ i $C_2$. Aquestes píndoles surten en dos colors: $\{yellow, white\}$, que són detectats per una càmera. La companyia fabrica píndoles en proporcions $P(C_1) = \frac{1}{3}$, $P(C_2) = \frac{2}{3}$. Se'ns facilita també informació sobre la distribució del color per cada classe: $P(yellow|C_1) = \frac{1}{5}$, $P(white|C_1) = \frac{4}{5}$ i $P(yellow|C_2)=\frac{2}{3}$, $P(white|C_2)=\frac{1}{3}$. Es demana:}
+
+
+\begin{enumerate}
+	\item \textbf{Quina és la probabilitat d'error si no s'utilitza el color per classificar?}
+\end{enumerate}
+$$
+P(yellow) = P(yellow|C_1)P(C_1) + P(yellow|C_2)P(C_2) = 
+\frac{1}{5}·\frac{1}{3} + \frac{2}{3}·\frac{2}{3}
+$$
+
+\begin{enumerate}[resume]
+	\item \textbf{Calcular les probabilitats $P(yellow)$ i $P(white)$ i les probabilitats $P(C_1|yellow)$, $P(C_2|yellow)$, $P(C_1|white)$, $P(C_1|yellow)$.}
+\end{enumerate}
+
+\begin{enumerate}[resume]
+	\item \textbf{Quina és la decisió òptima per pastilles \emph{yellow}? I per pastilles \emph{white}? Quins són els \emph{odds} en ambdós casos?}
+\end{enumerate}
+
+\begin{enumerate}[resume]
+	\item \textbf{Quina és la probabilitat d'error si s'utilitza el color per classificar? Perquè és millor que la de l'apartat 1?}
+\end{enumerate}
+
+
+
+
+
+
+\end{document}
