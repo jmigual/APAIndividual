@@ -23,14 +23,30 @@
 \begin{enumerate}
 	\item \textbf{Quina és la probabilitat d'error si no s'utilitza el color per classificar?}
 \end{enumerate}
+Si no s'utilitza el color per classificar es defineix la regla següent:
 $$
-P(yellow) = P(yellow|C_1)P(C_1) + P(yellow|C_2)P(C_2) = 
-\frac{1}{5}·\frac{1}{3} + \frac{2}{3}·\frac{2}{3}
+R_1: \text{ la classe de } X = 
+\begin{cases}
+C_1 \text{ si } P(C_1) > P(C_2) \\
+C_2 \text{ si } P(C_1) < P(C_2) \\
+\end{cases}
+$$
+Per tant la probabilitat d'error serà la d'escollir un element com una classe però que ho sigui d'una altra per tant:
+$$
+P_{error}(R_1) = \min(P(C_1),P(C_2)) = P(C_1) = \boxed{\frac{1}{3}}
 $$
 
 \begin{enumerate}[resume]
 	\item \textbf{Calcular les probabilitats $P(yellow)$ i $P(white)$ i les probabilitats $P(C_1|yellow)$, $P(C_2|yellow)$, $P(C_1|white)$, $P(C_1|yellow)$.}
 \end{enumerate}
+\begin{align*}
+&P(yellow) = P(yellow|C_1)P(C_1) + P(yellow|C_2)P(C_2) = 
+\frac{1}{5}·\frac{1}{3} + \frac{2}{3}·\frac{2}{3} = 
+\frac{1}{15} + \frac{4}{9} = \boxed{\frac{23}{45}} \\
+&P(white) = P(white|C_1)P(C_1) + P(white|C_2)P(C_2) =
+\frac{4}{5}·\frac{1}{3} + \frac{1}{3}·\frac{2}{3}
+\end{align*}
+
 
 \begin{enumerate}[resume]
 	\item \textbf{Quina és la decisió òptima per pastilles \emph{yellow}? I per pastilles \emph{white}? Quins són els \emph{odds} en ambdós casos?}
