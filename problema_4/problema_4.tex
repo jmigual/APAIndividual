@@ -40,23 +40,75 @@ $$
 	\item \textbf{Calcular les probabilitats $P(yellow)$ i $P(white)$ i les probabilitats $P(C_1|yellow)$, $P(C_2|yellow)$, $P(C_1|white)$, $P(C_1|yellow)$.}
 \end{enumerate}
 \begin{align*}
-&P(yellow) = P(yellow|C_1)P(C_1) + P(yellow|C_2)P(C_2) = 
+& P(yellow) = P(yellow|C_1)P(C_1) + P(yellow|C_2)P(C_2) = 
 \frac{1}{5}·\frac{1}{3} + \frac{2}{3}·\frac{2}{3} = 
 \frac{1}{15} + \frac{4}{9} = \boxed{\frac{23}{45}} \\
-&P(white) = P(white|C_1)P(C_1) + P(white|C_2)P(C_2) =
-\frac{4}{5}·\frac{1}{3} + \frac{1}{3}·\frac{2}{3}
+& P(white) = 1 - P(yellow) = 1 - \frac{23}{45} = 
+\boxed{\frac{22}{45}} \\
+& P(C_1|yellow) = \frac{P(yellow|C_1)P(C_1)}{P(yellow)} = 
+\frac{\frac{1}{5}·\frac{1}{3}}{\frac{23}{45}} = \boxed{\frac{3}{23}} \\
+& P(C_2|yellow) = 1 - P(C_1|yellow) = 1 - \frac{3}{23} = 
+\boxed{\frac{20}{23}} \\
+& P(C_1|white) = \frac{P(white|C_1)P(C_1)}{P(white)} =
+\frac{\frac{4}{5}·\frac{1}{3}}{\frac{22}{45}} =
+\boxed{\frac{6}{11}} \\
+& P(C_2|white) = 1 - P(C_1|white) = 1 - \frac{6}{11} =
+\boxed{\frac{5}{11}}
 \end{align*}
 
 
 \begin{enumerate}[resume]
 	\item \textbf{Quina és la decisió òptima per pastilles \emph{yellow}? I per pastilles \emph{white}? Quins són els \emph{odds} en ambdós casos?}
 \end{enumerate}
+\begin{align*}
+R_{yellow}: \text{ la classe de } X = &
+\begin{cases}
+C_1 \text{ si } P(C_1|yellow) > P(C_2|yellow) \\
+C_2 \text{ si } P(C_1|yellow) < P(C_2|yellow) \\
+\end{cases} \\
+& \begin{cases}
+P(C_1|yellow) = \frac{3}{23} \\
+P(C_2|yellow) = \frac{20}{23}
+\end{cases}
+\implies X = C_2
+\end{align*}
+Per tant la decisió òptima per pastilles \emph{yellow} és la classe $C_2$.
+
+\begin{align*}
+R_{white}: \text{ la classe de } X = &
+\begin{cases}
+C_1 \text{ si } P(C_1|white) > P(C_2|white) \\
+C_2 \text{ si } P(C_1|white) < P(C_2|white) \\
+\end{cases} \\
+& \begin{cases}
+P(C_1|white) = \frac{6}{11} \\
+P(C_2|white) = \frac{5}{11}
+\end{cases}
+\implies X = C_1
+\end{align*}
+Per tant la decisió òptima per pastilles \emph{white} és la classe $C_1$.
 
 \begin{enumerate}[resume]
 	\item \textbf{Quina és la probabilitat d'error si s'utilitza el color per classificar? Perquè és millor que la de l'apartat 1?}
 \end{enumerate}
+Si s'usa el color per classificar es defineix la següent regla, que és combinació de les dues regles definides anteriorment:
+$$
+R_{color}: \text{ la classe de } X = 
+\begin{cases}
+C_1 \text{ si } color = white \\
+C_2 \text{ si } color = yellow \\
+\end{cases}
+$$
 
-
+La probabilitat d'error és la de dir que un element pertany a una classe i que en realitat pertanyi a l'altra classe per tant:
+\begin{align*}
+P_{error}(R_{color}) & = 
+\min(P(C_1|yellow),P(C_2|yellow))P(yellow) + 
+\min(P(C_1|white),P(C_2|white))P(white) = \\
+& = P(C_1|yellow)P(yellow) + P(C_2|white)P(white) = 
+\frac{3}{23}·\frac{23}{45} + \frac{6}{11}·\frac{22}{45} = \\
+& = \frac{3}{45} + \frac{12}{45} = \boxed{\frac{1}{3}}
+\end{align*}
 
 
 
