@@ -32,8 +32,11 @@ calc_network <- function(neurons, maxit=200, decay=0.1) {
     error[i] = (pred - test$y)^2
     predicted[i] = pred
   }  
-  error
-  plot(c(seq(n), seq(n)), c(predicted, rock.y), col=c(rep('red', n),rep('green', n)))
+  plot(seq(n), predicted, ylab = "Valor", xlab = "Dada", col='red', ylim=c(0,1))
+  points(seq(n), error, col = 'blue')
+  points(seq(n), rock.y, col = 'green')
+  legend("topleft", legend=c("Predicted", "Original", "Error"), fill=c("red", "green", "blue"))
+  return(error)
 }
 
 rocks = rock.x
