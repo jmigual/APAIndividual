@@ -5,22 +5,33 @@ library(datasets)
 library(nnet)
 library(caret)
 
-data(rock)
-?rock
-
 normalize <- function(x) {
   min = min(x)
   max = max(x)
   (x - min)/(max - min)
 }
 
+# Funció per crear el gràfic per visualitzar les dades i l'error
+plot_error <- function(real, predicted) {
+  n = length(real)
+  error = (predicted - real)^2
+  plot(seq(n), predicted, ylab = "Valor", xlab = "Dada", col='red', ylim=c(0,1))
+  points(seq(n), error, col = 'blue')
+  points(seq(n), real, col = 'green')
+  legend("topleft", legend=c("Predicted", "Original", "Error"), fill=c("red", "green", "blue"))
+}
+
+data(rock)
+?rock
+
+# Dades a predir
 rock.x <- data.frame(area = normalize(rock$area), peri = normalize(rock$peri), shape = normalize(rock$shape))
 rock.y <- normalize(log(rock$perm))
 
+# Funciói usada per comprova una sola xarxa neuronal
 calc_network <- function(neurons, maxit=200, decay=0.1) {
   error = c()
   predicted = c()
-  n = nrow(rock.x)
   
   for (i in 1:nrow(rock.x)) {
     print(i)
@@ -32,17 +43,20 @@ calc_network <- function(neurons, maxit=200, decay=0.1) {
     error[i] = (pred - test$y)^2
     predicted[i] = pred
   }  
-  plot(seq(n), predicted, ylab = "Valor", xlab = "Dada", col='red', ylim=c(0,1))
-  points(seq(n), error, col = 'blue')
-  points(seq(n), rock.y, col = 'green')
-  legend("topleft", legend=c("Predicted", "Original", "Error"), fill=c("red", "green", "blue"))
+  plot_error(rock.y, predicted)
   return(error)
 }
 
 rocks = rock.x
 rocks$y = rock.y
 
+# Utilitzar Leave One Out Cross Validation per buscar l'error de la xarxa i així trobar la que millor s'ajusta
+# a les dades. Mitjançant train() es pot trobara quest paràmetre
 tc <- trainControl(method = "LOOCV")
-fit <- train(y ~., data = rocks, method="nnet", maxit=200, trControl=tc, trace=FALSE)#, tuneGrid=expand.grid(size=seq(10)*2, decay=0))
+fit <- train(y ~., data = rocks, method="nnet", maxit=200, trControl=tc, trace=FALSE)
+print(fit)
 
-predict(fit)
+pred = predict(fit)
+plot_error(rock.y, pred)
+
+# Un cop entrenada la xarxa es veu que el millor resultat és amb 1 neurona i no usar regularització
