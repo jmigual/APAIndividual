@@ -201,3 +201,4 @@ TSWLatexianTemp*
 /auto/*
 .Rproj.user
 *.Rproj
+*.Rhistory
