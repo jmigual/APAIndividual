@@ -31,3 +31,11 @@ for (i in 1:10) {
 }
 
 printf("El grau que mes ajusta es: %s\n", mini)
+
+dataF = data.frame(x = data, y = classes)
+glm.model = glm(x ~ y, data = dataF)
+glm.pred = predict(glm.model)
+
+glm.tab = table(glm.pred)
+error = (1 - sum(diag(glm.tab))/length(glm.pred))*100
+
