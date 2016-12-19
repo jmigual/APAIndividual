@@ -9,6 +9,8 @@ printf <- function(fmt, ...) {
 data = seq(1, 10)
 classes = c('b', 'b', 'b', 'b', 'a', 'a', 'a', 'a', 'b', 'b')
 
+minerror = Inf
+mini = Inf
 for (i in 1:10) {
   printf("Iteration: %s\n", i)
   # Calcular el model
@@ -17,8 +19,15 @@ for (i in 1:10) {
   
   # Calcular l'error
   svm.table = table(svm.pred, classes)
-  print(svm.table)
+  #print(svm.table)
   error = (1 - sum(diag(svm.table))/length(svm.pred))*100
   printf("Error for iteration %s: %s%%\n", i, error)
   printf("\n")
+  
+  if (minerror > error) {
+    minerror = error
+    mini = i
+  }
 }
+
+printf("El grau que mes ajusta es: %s\n", mini)
